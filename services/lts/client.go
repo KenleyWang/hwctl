@@ -9,20 +9,18 @@ import (
 
 type (
 	LTSClient interface {
-		GetClient() *lts.LtsClient
+		Log
+		LogGroup
+		LogStream
 	}
 	ltsClient struct {
-		Client *lts.LtsClient
+		client *lts.LtsClient
 	}
 )
 
-func (client *ltsClient) GetClient() *lts.LtsClient {
-	return client.Client
-}
-
 func NewLTSClient(c *config.Config) LTSClient {
 	return &ltsClient{
-		Client: initClient(c),
+		client: initClient(c),
 	}
 
 }

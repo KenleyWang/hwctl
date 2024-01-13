@@ -4,7 +4,7 @@ import (
 	ltsModel "github.com/huaweicloud/huaweicloud-sdk-go-v3/services/lts/v2/model"
 	"github.com/spf13/cobra"
 	"hwctl/config"
-	"hwctl/huaweiSDKClient/lts/logGroup"
+	"hwctl/services/lts"
 )
 
 var listLogGroupCmd = &cobra.Command{
@@ -16,7 +16,8 @@ var listLogGroupCmd = &cobra.Command{
 		c := cmd.Context().Value("c")
 		if c, ok := c.(*config.Config); ok {
 			var rsp *ltsModel.ListLogGroupsResponse
-			rsp, err := logGroup.ListLogGroup(c)
+			ltsClient := lts.NewLTSClient(c)
+			rsp, err := ltsClient.ListLogGroups()
 			if err != nil {
 				return err
 			}

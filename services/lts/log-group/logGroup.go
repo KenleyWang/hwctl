@@ -1,4 +1,4 @@
-package logGroup
+package log_group
 
 import (
 	ltsv2 "github.com/huaweicloud/huaweicloud-sdk-go-v3/services/lts/v2"
