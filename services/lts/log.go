@@ -8,7 +8,7 @@ import (
 
 type (
 	Log interface {
-		ListLogs() (*ltsModel.ListLogsResponse, error)
+		ListLogs(LogGroupId string, LogStreamId string, startTime time.Time, endTime time.Time, limit int32, keywords string, isCount bool, listLabelled map[string]string) (*ltsModel.ListLogsResponse, error)
 	}
 )
 
