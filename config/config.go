@@ -1,6 +1,7 @@
 package config
 
 import (
+	"github.com/huaweicloud/huaweicloud-sdk-go-v3/core/auth/basic"
 	"gopkg.in/yaml.v3"
 	"os"
 	"reflect"
@@ -19,17 +20,24 @@ func (c *Config) LoadConfig(configPath string) error {
 	if err != nil {
 		return err
 	}
-
 	// 在考虑环境变量重载
 	c.mergeEnv()
 
 	return nil
 }
+
 func (c *Config) MustLoadConfig(configPath string) {
 	err := c.LoadConfig(configPath)
 	if err != nil {
 		panic(err)
 	}
+}
+
+func (c *Config) GenerateCredential() *basic.Credentials {
+	return basic.NewCredentialsBuilder().
+		WithAk(c.AK).
+		WithSk(c.SK).
+		Build()
 }
 
 func (c *Config) parseConfig(conf string) error {

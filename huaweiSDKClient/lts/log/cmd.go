@@ -1,15 +1,15 @@
-package logGroup
+package log
 
 import (
 	"github.com/spf13/cobra"
 	"hwctl/config"
 )
 
-var LogGroupCmd = &cobra.Command{
-	Use:          "loggroup",
-	Short:        "loggroup",
+var LogCmd = &cobra.Command{
+	Use:          "logs",
+	Short:        "日志内容",
 	SilenceUsage: true,
-	Long:         `loggroup`,
+	Long:         `log`,
 	//Example:      `awdw`,
 	//PersistentPreRunE: func(*cobra.Command, []string) error { return nil },
 	Run: cmdRun,
@@ -24,6 +24,6 @@ func cmdRun(cmd *cobra.Command, args []string) {
 
 	var c config.Config
 	c.MustLoadConfig(s)
-	getLogGroup(&c)
+	getLogs(&c)
 
 }
