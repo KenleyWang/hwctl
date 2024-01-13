@@ -7,7 +7,7 @@ import (
 	"hwctl/services/lts"
 )
 
-var listLogGroupCmd = &cobra.Command{
+var listLogGroupsCmd = &cobra.Command{
 	Use:          "loggroup",
 	Short:        "获取华为云LTS(云日志服务)的日志组",
 	SilenceUsage: true,

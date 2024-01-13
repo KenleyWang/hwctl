@@ -15,5 +15,5 @@ var LtsCmd = &cobra.Command{
 }
 
 func init() {
-	LtsCmd.AddCommand(listLogGroupCmd)
+	LtsCmd.AddCommand(listLogGroupsCmd)
 }
