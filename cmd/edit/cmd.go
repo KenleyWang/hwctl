@@ -2,8 +2,6 @@ package edit
 
 import (
 	"github.com/spf13/cobra"
-	"hwctl/cmd/lts/log"
-	"hwctl/cmd/lts/logStream"
 )
 
 //func init() {
@@ -23,6 +21,6 @@ var EditCmd = &cobra.Command{
 }
 
 func init() {
-	EditCmd.AddCommand(logStream.LogStreamCmd)
-	EditCmd.AddCommand(log.LogCmd)
+	//EditCmd.AddCommand(logStream.LogStreamCmd)
+	//EditCmd.AddCommand(log.LogCmd)
 }
