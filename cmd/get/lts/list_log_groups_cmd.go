@@ -4,6 +4,7 @@ import (
 	ltsModel "github.com/huaweicloud/huaweicloud-sdk-go-v3/services/lts/v2/model"
 	"github.com/spf13/cobra"
 	"hwctl/config"
+	"hwctl/pkg/printf"
 	"hwctl/services/lts"
 )
 
@@ -21,7 +22,7 @@ var listLogGroupsCmd = &cobra.Command{
 			if err != nil {
 				return err
 			}
-			println(rsp)
+			printf.PrintSlice(rsp.LogGroups)
 		}
 		return nil
 	},
