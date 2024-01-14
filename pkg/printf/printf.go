@@ -13,7 +13,10 @@ func PrintSlice(slice interface{}) error {
 	if sliceValue.Kind() != reflect.Ptr || sliceValue.Elem().Kind() != reflect.Slice {
 		return fmt.Errorf("input is not a pointer to a slice")
 	}
-
+	if sliceValue.Elem().Len() == 0 {
+		fmt.Println("data empty")
+		return nil
+	}
 	// 创建一个 TabWriter
 	w := tabwriter.NewWriter(os.Stdout, 0, 0, 2, ' ', 0)
 
@@ -37,7 +40,13 @@ func PrintSlice(slice interface{}) error {
 	for i := 0; i < sliceValue.Elem().Len(); i++ {
 		item := sliceValue.Elem().Index(i)
 		for j := 0; j < item.NumField(); j++ {
-			fieldValue := fmt.Sprintf("%v", item.Field(j).Interface())
+			val := reflect.ValueOf(item.Field(j).Interface())
+
+			// 如果传入的是指针，则解引用
+			if val.Kind() == reflect.Ptr {
+				val = val.Elem()
+			}
+			fieldValue := fmt.Sprintf("%v", val)
 			if _, err := fmt.Fprintf(w, "%s\t", fieldValue); err != nil {
 				return fmt.Errorf("error writing to TabWriter: %v", err)
 			}
