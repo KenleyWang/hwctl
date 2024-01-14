@@ -4,10 +4,14 @@ import ltsModel "github.com/huaweicloud/huaweicloud-sdk-go-v3/services/lts/v2/mo
 
 type (
 	LogStream interface {
-		ListLogStreams() (*ltsModel.ListLogStreamsResponse, error)
+		ListLogStream(string) (*ltsModel.ListLogStreamResponse, error)
 	}
 )
 
-func (c *ltsClient) ListLogStreams() (*ltsModel.ListLogStreamsResponse, error) {
-	return nil, nil
+func (c *ltsClient) ListLogStream(logGroupId string) (*ltsModel.ListLogStreamResponse, error) {
+	request := &ltsModel.ListLogStreamRequest{
+		LogGroupId: logGroupId,
+	}
+	response, err := c.client.ListLogStream(request)
+	return response, err
 }
