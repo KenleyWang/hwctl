@@ -15,5 +15,7 @@ var LtsCmd = &cobra.Command{
 }
 
 func init() {
+	LtsCmd.AddCommand(listLogsCmd)
 	LtsCmd.AddCommand(listLogGroupsCmd)
+	LtsCmd.AddCommand(listLogStreamsCmd)
 }

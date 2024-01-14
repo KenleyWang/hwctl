@@ -19,6 +19,6 @@ var GetCmd = &cobra.Command{
 }
 
 func init() {
-	//GetCmd.AddCommand(logStream.LogStreamCmd)
 	GetCmd.AddCommand(lts.LtsCmd)
+	//GetCmd.AddCommand(lts.LtsCmd)
 }
