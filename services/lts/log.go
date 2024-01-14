@@ -12,10 +12,10 @@ type (
 	}
 )
 
-func (c *ltsClient) ListLogs(LogGroupId string, LogStreamId string, startTime time.Time, endTime time.Time, limit int32, keywords string, isCount bool, listLabelled map[string]string) (*ltsModel.ListLogsResponse, error) {
+func (c *ltsClient) ListLogs(logGroupId string, logStreamId string, startTime time.Time, endTime time.Time, limit int32, keywords string, isCount bool, listLabelled map[string]string) (*ltsModel.ListLogsResponse, error) {
 	request := &ltsModel.ListLogsRequest{}
-	request.LogGroupId = LogGroupId
-	request.LogStreamId = LogStreamId
+	request.LogGroupId = logGroupId
+	request.LogStreamId = logStreamId
 	request.Body = &ltsModel.QueryLtsLogParams{
 		Limit:     &limit,
 		Keywords:  &keywords,
